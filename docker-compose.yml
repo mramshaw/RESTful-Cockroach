@@ -1,0 +1,51 @@
+version: '2'
+
+networks:
+  roachnet:
+
+services:
+
+    golang:
+        build: .
+        image: mramshaw4docs/golang-alpine-cockroach:1.8
+        networks:
+          roachnet:
+        depends_on:
+            - cockroach
+        ports:
+            - "80:8100"
+        volumes:
+            - ./src/application:/go/src/application
+            - ./src/recipes:/go/src/recipes
+            - ./src/test:/go/src/test
+            - ./src:/go/src/RestfulRecipes
+        working_dir: /go/src/RestfulRecipes
+        command: make
+        #command: ./restful_cockroach
+        links:
+            - cockroach
+        environment:
+            DEBUG: 'true'
+            PORT: '8100'
+            COCKROACH_USER: halroach
+            COCKROACH_DB: recipes
+
+    cockroach:
+        image: cockroachdb/cockroach:v1.1.7
+        networks:
+          roachnet:
+            aliases:
+              - cockroach-backend
+        restart: unless-stopped
+        ports:
+            # database port
+            - "26257:26257"
+            # admin-ui port
+            - "8080:8080"
+        volumes:
+            - ./scripts/cockroach-init.sh:/cockroach/cockroach-init.sh
+        environment:
+            COCKROACH_USER: halroach
+            COCKROACH_DB: recipes
+        entrypoint: "/bin/bash"
+        command: /cockroach/cockroach-init.sh
