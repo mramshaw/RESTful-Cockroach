@@ -233,6 +233,8 @@ At least with the current release (v1.1.7) of CockroachDB, the features I use ar
 
 I thought my SQL was pretty vanilla, but it seems cascading deletes are not available.
 
+Even so, it does seem that "ON DELETE CASCADE" is on the radar for the future.
+
 
 ## To Do
 
