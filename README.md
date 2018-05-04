@@ -5,7 +5,7 @@ a drop-in replacement for PostgreSQL.
 
 This builds on my [RESTful-Recipes](https://github.com/mramshaw/RESTful-Recipes) repo,
 which stores data in [PostgreSQL](https://www.postgresql.org/). As CockroachDB uses both
-the PostgreSQL wire protocal and the Golang driver - while RESTFul-Recipes has acceptance
+the PostgreSQL wire protocol and the Golang driver - while RESTFul-Recipes has acceptance
 tests - this is an effort to see how easy it is to use CockroachDB instead of PostgreSQL.
 
 All dependencies are handled via [Docker](https://www.docker.com/products/docker) and __docker-compose__.
@@ -238,6 +238,7 @@ Even so, it does seem that "ON DELETE CASCADE" is on the radar for the future.
 
 ## To Do
 
+- [ ] Upgrade to latest Go
 - [ ] Fix database initialization script (currently must run manually)
 - [ ] Try again with the next point release of CockroachDB
 - [ ] Investigate the feature roadmap of CockroachDB
