@@ -139,7 +139,7 @@ A successful `golang` startup should show the following as the last line of `doc
 
     golang_1    | 2018/02/24 18:38:01 Now serving recipes ...
 
-In this line does not appear, repeat the `docker-compose up -d` command (there is no penalty for this).
+If this line does not appear, repeat the `docker-compose up -d` command (there is no penalty for this).
 
 
 ## To Build:
